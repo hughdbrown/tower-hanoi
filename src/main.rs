@@ -22,17 +22,17 @@ impl Tower {
         Tower { moves: Vec::<DiskMove>::new(), num_disks: n }
     }
     
-    fn hanoi(self: &mut Self, disks: i8, src: char, dst: char, tmp: char) {
+    fn move_disks(self: &mut Self, disks: i8, src: char, dst: char, tmp: char) {
         if disks > 0 {
-            self.hanoi(disks - 1, src, tmp, dst);
+            self.move_disks(disks - 1, src, tmp, dst);
             self.moves.push(DiskMove{src, dst});
-            self.hanoi(disks - 1, tmp, dst, src);
+            self.move_disks(disks - 1, tmp, dst, src);
         }
     }
 
     fn run(&mut self) {
         let disks = self.num_disks;
-        self.hanoi(disks, 'A', 'B', 'C');
+        self.move_disks(disks, 'A', 'B', 'C');
     }
 
     fn draw(&self, a: &[i8], b: &[i8], c: &[i8]) {
