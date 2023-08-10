@@ -18,7 +18,7 @@ pub struct Tower {
 }
 
 impl Tower {
-    fn new(n: i8) -> Self {
+    pub fn new(n: i8) -> Self {
         Tower { moves: Vec::<DiskMove>::new(), num_disks: n }
     }
     
@@ -30,7 +30,7 @@ impl Tower {
         }
     }
 
-    fn run(&mut self) {
+    pub fn run(&mut self) {
         let disks = self.num_disks;
         self.move_disks(disks, 'A', 'B', 'C');
     }
@@ -42,7 +42,7 @@ impl Tower {
         println!("C: {:?}", c);
     }
 
-    fn visualize(self) {
+    pub fn visualize(self) {
         let mut a: Vec<i8> = vec![];
         let mut b: Vec<i8> = vec![];
         let mut c: Vec<i8> = vec![];
